@@ -1,0 +1,23 @@
+authScripts:
+  enabled: true
+  scripts:
+    ecr-login.sh: |
+      #!/bin/bash
+      HOME=/tmp
+      aws ecr --region us-east-1 get-authorization-token --output text --query 'authorizationData[].authorizationToken' | base64 -d
+config:
+  registries:
+  - name: ECR
+    api_url: https://851725326403.dkr.ecr.us-east-1.amazonaws.com
+    prefix: 851725326403.dkr.ecr.us-east-1.amazonaws.com
+    ping: yes
+    default: true
+    insecure: false
+    credentials: ext:/scripts/ecr-login.sh
+    credsexpire: 12h
+
+serviceAccount:
+  create: true
+  annotations:
+    eks.amazonaws.com/role-arn: "arn:aws:iam::851725326403:role/ECRAccessRole"
+  name: "argocd-image-updater"

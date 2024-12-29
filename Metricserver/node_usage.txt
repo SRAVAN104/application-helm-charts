@@ -1,0 +1,3 @@
+NAME                             CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+ip-192-168-16-125.ec2.internal   42m          2%     1425Mi          20%       
+ip-192-168-46-154.ec2.internal   42m          2%     1803Mi          25%       

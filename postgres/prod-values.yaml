@@ -1,0 +1,12 @@
+replicaCount: 1
+
+env:
+  PGUSER: postgres
+  PGPASSWORD: postgres
+  PGDATABASE: postgres
+
+resources:
+  limits:
+    memory: 1280Mi
+  requests:
+    memory: 1280Mi 

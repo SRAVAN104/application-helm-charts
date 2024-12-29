@@ -1,0 +1,14 @@
+helm:
+  parameters:
+  - name: image.repository
+    value: 851725326403.dkr.ecr.us-east-1.amazonaws.com/api-prod
+    forcestring: false
+  - name: image.tag
+    value: 7b19860-44
+    forcestring: true
+  - name: replicaCount
+    value: "1"
+    forcestring: false
+  - name: image.name
+    value: 851725326403.dkr.ecr.us-east-1.amazonaws.com/api-prod
+    forcestring: true

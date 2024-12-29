@@ -1,0 +1,44 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-web-to-api
+  namespace: dev
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: api-dev
+      app.kubernetes.io/name: api
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: web-dev
+              app.kubernetes.io/name: web
+      ports:
+        - protocol: TCP
+          port: 8080
+  policyTypes:
+    - Ingress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-web-to-api
+  namespace: prod
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: api-prod
+      app.kubernetes.io/name: api
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: web-prod
+              app.kubernetes.io/name: web
+      ports:
+        - protocol: TCP
+          port: 8080
+  policyTypes:
+    - Ingress    
